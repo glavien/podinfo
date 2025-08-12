@@ -45,8 +45,8 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         tags: |
-          type=raw,value=${{ env.ENVIRONMENT }}-latest
-          type=raw,value=${{ env.ENVIRONMENT }}-{{sha}},enable={{is_default_branch}}
+          type=raw,value=latest
+          type=raw,value={{sha}},enable={{is_default_branch}}
         flavor: |
           latest=false
 
@@ -69,6 +69,5 @@ jobs:
         echo "**Registry:** \`${{ env.REGISTRY }}\`" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Tags:**" >> $GITHUB_STEP_SUMMARY
-        echo "- \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.ENVIRONMENT }}-latest\`" >> $GITHUB_STEP_SUMMARY
-        echo "- \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.ENVIRONMENT }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-
+        echo "- \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest\`" >> $GITHUB_STEP_SUMMARY
+        echo "- \`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
