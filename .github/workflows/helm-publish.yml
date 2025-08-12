@@ -59,7 +59,7 @@ jobs:
           repository: glavien/helm-charts
           ref: gh-pages
           path: helm-charts-repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.HELM_REPO_TOKEN }}
 
       - name: Copy packaged chart to helm-charts repo
         run: |
