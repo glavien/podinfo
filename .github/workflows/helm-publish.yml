@@ -70,6 +70,10 @@ jobs:
         run: |
           cd helm-charts-repo/charts
           helm repo index . --url https://glavien.github.io/helm-charts/charts/
+          # Also update the root index.yaml for GitHub Pages
+          cd ..
+          helm repo index charts --url https://glavien.github.io/helm-charts/charts/ --merge index.yaml
+          cp charts/index.yaml index.yaml
           
       - name: Commit and push to helm-charts repository
         run: |
